@@ -1,0 +1,15 @@
+{
+    "name": "nodejs-1",
+    "version": "1.0.0",
+    "description": "no one",
+    "main": "nodejs-1/main.js",
+    "scripts": {
+      "start": "node nodejs-1/main.js"
+    },
+    "dependencies":
+    {
+      "npm": "^3.10.9",
+      "node-import": "*"
+    },
+    "devDependencies": { }
+}
