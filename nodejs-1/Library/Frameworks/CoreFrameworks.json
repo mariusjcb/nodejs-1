@@ -1,0 +1,12 @@
+[
+    {
+        "frameworkName": "ApplicationCore",
+        "frameworkPath": "Application/ApplicationCore.js",
+        "frameworkVersion": "1.0.0"
+    },
+    {
+        "frameworkName": "ServerApplicationCore",
+        "frameworkPath": "Application/ServerApplicationCore.js",
+        "frameworkVersion": "1.0.0"
+    }
+]

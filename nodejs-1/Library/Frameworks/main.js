@@ -1,27 +1,34 @@
-var forcedFrameworks = [
-    {
-        "frameworkName": "Application",
-        "frameworkPath": "Application/Application.js",
-        "frameworkVersion": "1.0.0"
+var FrameworksLoader = class {
+    getListOfCoreFrameworks() {
+        return JSON.parse(Import.Framework("CoreFrameworks.json").text);
     }
-];
 
-(function loadAllFrameworks() {
-    var frameworksListFromJSON = JSON.parse(imports(process.env.npm_package_name+"/frameworks.json").text);
+    getListOfUserFrameworks() {
+        return JSON.parse(Import.Main("frameworks.json").text)
+    }
 
-    loadFrameworksFromArray(forcedFrameworks);
-    loadFrameworksFromArray(frameworksListFromJSON);
-})();
-
-function loadFrameworksFromArray(frameworksArray)
-{
-    for(var index in frameworksArray)
+    loadFrameworksFromArray(frameworksArray)
     {
-        try {
-            Import(frameworksArray[index].frameworkPath);
-            console.log("Note: "+frameworksArray[index].frameworkName+" loaded");
-        } catch (FrameworkError) {
-            console.log("(!) Framework ERROR: "+frameworksArray[index].frameworkName+" | " + FrameworkError);
+        for(var index in frameworksArray)
+        {
+            try {
+                Import.Framework(frameworksArray[index].frameworkPath);
+                console.log("Note: "+frameworksArray[index].frameworkName+" loaded");
+            } catch (FrameworkError) {
+                console.log("(!) Framework ERROR: "+frameworksArray[index].frameworkName+" | " + FrameworkError);
+            }
+        }
+    }
+
+    constructor() {
+        if(process.env["frameworksLoaded"] != true)
+        {
+            this.loadFrameworksFromArray(this.getListOfCoreFrameworks());
+            this.loadFrameworksFromArray(this.getListOfUserFrameworks());
+
+            console.log("\n");
+
+            process.env["frameworksLoaded"] = true
         }
     }
 }

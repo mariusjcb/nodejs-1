@@ -9,7 +9,8 @@
     "dependencies":
     {
       "npm": "^3.10.9",
-      "node-import": "*"
+      "node-import": "*",
+      "os": "*"
     },
     "devDependencies": { }
 }

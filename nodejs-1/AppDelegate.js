@@ -5,6 +5,6 @@ var AppDelegate = class extends Application {
 
     applicationDidBecomeActive() {
         // your code here
-        new ConsoleLog("it works");
+        new ConsoleLog("app works");
     }
 }

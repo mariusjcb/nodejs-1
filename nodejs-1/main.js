@@ -1,8 +1,11 @@
 require('node-import');
 
-imports(process.env.npm_package_name+"/Base.js");
-imports(process.env.npm_package_name+"/AppDelegate.js");
+var os = include("nodejs-1/node_modules/os"); // nu include ***
+console.log(os.type());
+
+imports(process.env.npm_package_name + "/Base.js");
 
 (function main() {
     var coreApp = new AppDelegate();
+    var coreServer = new ServerApplication();
 })();
